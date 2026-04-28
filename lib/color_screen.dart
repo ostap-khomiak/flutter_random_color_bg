@@ -34,10 +34,13 @@ class _ColorScreenState extends State<ColorScreen> {
   }
 
   String _toHexString(Color color) {
+    const hexRadix = 16;
+    const hexPartLength = 2;
+
     return '#'
-            '${color.red.toRadixString(16).padLeft(2, '0')}'
-            '${color.green.toRadixString(16).padLeft(2, '0')}'
-            '${color.blue.toRadixString(16).padLeft(2, '0')}'
+            '${color.red.toRadixString(hexRadix).padLeft(hexPartLength, '0')}'
+            '${color.green.toRadixString(hexRadix).padLeft(hexPartLength, '0')}'
+            '${color.blue.toRadixString(hexRadix).padLeft(hexPartLength, '0')}'
         .toUpperCase();
   }
 
