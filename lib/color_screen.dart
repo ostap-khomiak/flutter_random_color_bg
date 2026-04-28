@@ -33,6 +33,14 @@ class _ColorScreenState extends State<ColorScreen> {
     });
   }
 
+  String _toHexString(Color color) {
+    return '#'
+            '${color.red.toRadixString(16).padLeft(2, '0')}'
+            '${color.green.toRadixString(16).padLeft(2, '0')}'
+            '${color.blue.toRadixString(16).padLeft(2, '0')}'
+        .toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,11 +48,11 @@ class _ColorScreenState extends State<ColorScreen> {
       behavior: HitTestBehavior.opaque,
       child: ColoredBox(
         color: _backgroundColor,
-        child: const Center(
+        child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 "Hello there",
                 style: TextStyle(
                   fontSize: 32,
@@ -57,6 +65,23 @@ class _ColorScreenState extends State<ColorScreen> {
                     Shadow(offset: Offset(1.5, -1.5), color: Colors.white),
                     Shadow(offset: Offset(1.5, 1.5), color: Colors.white),
                     Shadow(offset: Offset(-1.5, 1.5), color: Colors.white),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                _toHexString(_backgroundColor),
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                  shadows: [
+                    Shadow(offset: Offset(-1, -1), color: Colors.white),
+                    Shadow(offset: Offset(1, -1), color: Colors.white),
+                    Shadow(offset: Offset(1, 1), color: Colors.white),
+                    Shadow(offset: Offset(-1, 1), color: Colors.white),
                   ],
                 ),
               ),
